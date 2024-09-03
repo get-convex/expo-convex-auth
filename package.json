@@ -15,8 +15,10 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@convex-dev/auth": "^0.0.63",
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/native": "^6.0.2",
+    "convex": "^1.15.0",
     "expo": "~51.0.28",
     "expo-constants": "~16.0.2",
     "expo-font": "~12.0.9",
