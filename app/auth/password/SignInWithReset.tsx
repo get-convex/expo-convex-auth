@@ -78,11 +78,10 @@ function ResetPasswordWithEmailCode({
         password.
       </Text>
       <Form className="flex flex-col" onSubmit={handleSubmit}>
-        <Label htmlFor="code">Code</Label>
-        <Input id="code" value={code} onChangeText={setCode} />
-        <Label htmlFor="newPassword">New Password</Label>
+        <Label>Code</Label>
+        <Input value={code} onChangeText={setCode} />
+        <Label>New Password</Label>
         <Input
-          id="newPassword"
           value={newPassword}
           onChangeText={setNewPassword}
           autoComplete="new-password"
@@ -90,7 +89,7 @@ function ResetPasswordWithEmailCode({
           secureTextEntry={true}
         />
         <Form.Trigger asChild>
-          <Button themeInverse disabled={submitting}>
+          <Button themeInverse disabled={submitting} marginTop="$4">
             Continue
           </Button>
         </Form.Trigger>

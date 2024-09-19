@@ -36,22 +36,17 @@ export function SignInWithPassword({
   };
   return (
     <Form onSubmit={handleSubmit}>
-      <Label htmlFor="email">Email</Label>
+      <Label>Email</Label>
       <Input
-        id="email"
         autoComplete="email"
         autoCapitalize="none"
         value={email}
         onChangeText={setEmail}
       />
       <View>
-        <Label htmlFor="password">Password</Label>
-        {handlePasswordReset && flow === "signIn" ? (
-          <Button onPress={handlePasswordReset}>Forgot your password?</Button>
-        ) : null}
+        <Label>Password</Label>
       </View>
       <Input
-        id="password"
         autoComplete={flow === "signIn" ? "current-password" : "new-password"}
         autoCapitalize="none"
         value={password}
@@ -59,7 +54,7 @@ export function SignInWithPassword({
         secureTextEntry={true}
       />
       <Form.Trigger asChild>
-        <Button themeInverse disabled={submitting}>
+        <Button themeInverse disabled={submitting} marginTop="$4">
           {flow === "signIn" ? "Sign in" : "Sign up"}
         </Button>
       </Form.Trigger>
@@ -72,6 +67,9 @@ export function SignInWithPassword({
           ? "Don't have an account? Sign up"
           : "Already have an account? Sign in"}
       </Button>
+      {handlePasswordReset && flow === "signIn" ? (
+        <Button onPress={handlePasswordReset}>Forgot your password?</Button>
+      ) : null}
     </Form>
   );
 }

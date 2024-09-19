@@ -1,5 +1,5 @@
 import { Stack } from "expo-router";
-import { ConvexProvider, ConvexReactClient } from "convex/react";
+import { ConvexReactClient } from "convex/react";
 import * as SecureStore from "expo-secure-store";
 import { ConvexAuthProvider } from "@convex-dev/auth/react";
 import { TamaguiProvider, createTamagui } from "tamagui";
@@ -11,9 +11,15 @@ const convex = new ConvexReactClient(process.env.EXPO_PUBLIC_CONVEX_URL!, {
 });
 
 const secureStorage = {
-  getItem: SecureStore.getItemAsync,
-  setItem: SecureStore.setItemAsync,
-  removeItem: SecureStore.deleteItemAsync,
+  getItem: async (key: string) => {
+    return SecureStore.getItemAsync(key);
+  },
+  setItem: async (key: string, value: any) => {
+    await SecureStore.setItemAsync(key, value);
+  },
+  removeItem: async (key: string) => {
+    await SecureStore.deleteItemAsync(key);
+  },
 };
 
 const tamaguiConfig = createTamagui(config);
@@ -24,7 +30,11 @@ export default function RootLayout() {
       <Toasts>
         <ConvexAuthProvider
           client={convex}
-          storage={window.localStorage ?? secureStorage}
+          storage={
+            window.localStorage === undefined
+              ? secureStorage
+              : window.localStorage
+          }
         >
           <Stack>
             <Stack.Screen name="index" />

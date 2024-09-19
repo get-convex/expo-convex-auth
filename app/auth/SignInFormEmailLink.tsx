@@ -5,7 +5,6 @@ import { useToastController } from "@tamagui/toast";
 
 export function SignInFormEmailLink() {
   const [step, setStep] = useState<"signIn" | "linkSent">("signIn");
-  console.log("step", step);
 
   return (
     <View padding="$4">
@@ -34,10 +33,7 @@ function SignInWithMagicLink({
   const toast = useToastController();
   const [submitting, setSubmitting] = useState(false);
   const [email, setEmail] = useState("");
-  console.log("email", email);
-  console.log("submitting", submitting);
   const handleSubmit = () => {
-    console.log("submitting");
     setSubmitting(true);
     signIn("resend", { email })
       .then(() => {
@@ -51,26 +47,33 @@ function SignInWithMagicLink({
       });
   };
   return (
-    <Form onSubmit={handleSubmit}>
-      <Label htmlFor="email">Email</Label>
-      <Input
-        id="email"
-        value={email}
-        placeholder="Email"
-        autoCapitalize="none"
-        onChangeText={setEmail}
-        autoComplete="email"
-      />
-      <Form.Trigger asChild>
-        <Button
-          themeInverse
-          size="$5"
-          disabled={submitting}
-          disabledStyle={{ opacity: 0.5 }}
-        >
-          Send sign-in link
-        </Button>
-      </Form.Trigger>
-    </Form>
+    <View gap="$4">
+      <Text>
+        Note: Magic links can't be opened in a mobile app, but can allow logging
+        in from a browser. OTPs offer a better log in experience for mobile
+        apps.
+      </Text>
+      <Form onSubmit={handleSubmit}>
+        <Label>Email</Label>
+        <Input
+          value={email}
+          placeholder="Email"
+          autoCapitalize="none"
+          onChangeText={setEmail}
+          autoComplete="email"
+        />
+        <Form.Trigger asChild>
+          <Button
+            marginTop="$4"
+            themeInverse
+            size="$5"
+            disabled={submitting}
+            disabledStyle={{ opacity: 0.5 }}
+          >
+            Send sign-in link
+          </Button>
+        </Form.Trigger>
+      </Form>
+    </View>
   );
 }

@@ -1,6 +1,4 @@
 import { H2, SizableText, Tabs, View } from "tamagui";
-import { SignInFormEmailCode } from "./email/SignInFormEmailCode";
-import { SignInFormPhoneCode } from "./sms/SignInFormPhoneCode";
 import { SignInWithPassword } from "./SignInWithPassword";
 import { SignInWithReset } from "./SignInWithReset";
 
@@ -13,9 +11,6 @@ export function Password() {
         </Tabs.Tab>
         <Tabs.Tab value="reset">
           <SizableText>Password Reset</SizableText>
-        </Tabs.Tab>
-        <Tabs.Tab value="verification">
-          <SizableText>OAuth + Email Verification</SizableText>
         </Tabs.Tab>
       </Tabs.List>
 

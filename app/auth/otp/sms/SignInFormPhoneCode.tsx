@@ -71,7 +71,7 @@ function SignInWithPhoneCode({
   const toast = useToastController();
   const handleSubmit = () => {
     setSubmitting(true);
-    signIn("twilio", { phone })
+    signIn("twilio-otp", { phone })
       .then(() => {
         handleCodeSent(phone);
       })

@@ -45,7 +45,7 @@ const CurrentToast = () => {
       animation="100ms"
       viewportName={currentToast.viewportName}
     >
-      <Toast.Title>{currentToast.message}</Toast.Title>
+      <Toast.Title>{currentToast.title}</Toast.Title>
     </Toast>
   );
 };
