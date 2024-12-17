@@ -13,7 +13,7 @@ export function SignInWithGoogle() {
   const [submitting, setSubmitting] = useState(false);
   const handleSignIn = async () => {
     setSubmitting(true);
-    const { redirect } = await signIn("github", {
+    const { redirect } = await signIn("google", {
       redirectTo,
     });
     if (Platform.OS === "web") {
